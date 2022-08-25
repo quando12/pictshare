@@ -1,5 +1,5 @@
 tmp/*
-inc/config.inc.php
+inc/example.config.inc.php
 data/*
 bin
 .git
