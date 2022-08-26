@@ -16,6 +16,10 @@ RUN docker-php-ext-install -j$(nproc) \
  json \
  mbstring
 
+#ssl
+COPY ./localhost.crt /etc/nginx/localhost.crt
+COPY ./localhost.key /etc/nginx/localhost.key
+
 COPY ./deploy/web.conf /etc/nginx/sites-enabled
 COPY ./deploy/start.sh /etc/start.sh
 COPY ./deploy/supervisor.conf /etc/supervisor/conf.d/
