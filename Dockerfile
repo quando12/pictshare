@@ -44,5 +44,5 @@ RUN ls inc
 
 #Init code
 RUN chmod +x /etc/start.sh
-
+EXPOSE 8088
 ENTRYPOINT ["/etc/start.sh"]
