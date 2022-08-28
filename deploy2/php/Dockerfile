@@ -6,28 +6,26 @@ RUN apt-get install -y \
  libjpeg62-turbo-dev \
  libpng-dev \
  libmcrypt-dev \
- openssl \
- supervisor \
- nginx
+ openssl 
 
 RUN docker-php-ext-install -j$(nproc) \
  exif \
  gd \
  json \
  mbstring
-
+RUN ls -la
 #ssl
 COPY ./pictshare.meey.dev.crt /etc/nginx/pictshare.meey.dev.crt
 COPY ./pictshare.meey.dev.key /etc/nginx/pictshare.meey.dev.key
 
-COPY ./deploy/web.conf /etc/nginx/sites-enabled
-COPY ./deploy/start.sh /etc/start.sh
-COPY ./deploy/supervisor.conf /etc/supervisor/conf.d/
+#COPY ./deploy/web.conf /etc/nginx/sites-enabled
+#COPY ./deploy/start.sh /etc/start.sh
+#COPY ./deploy/supervisor.conf /etc/supervisor/conf.d/
 
-RUN rm /etc/nginx/sites-enabled/default
+#RUN rm /etc/nginx/sites-enabled/default
 
-COPY . /var/www/html/
-WORKDIR /var/www/html/
+#COPY . /var/www/html/
+#WORKDIR /var/www/html/
 
 RUN rm -f inc/example.config.inc.php
 
@@ -44,5 +42,5 @@ RUN ls inc
 
 #Init code
 RUN chmod +x /etc/start.sh
-
-ENTRYPOINT ["/etc/start.sh"]
+#EXPOSE 8088
+#ENTRYPOINT ["/etc/start.sh"]
