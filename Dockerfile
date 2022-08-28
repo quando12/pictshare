@@ -34,7 +34,7 @@ RUN rm -f inc/example.config.inc.php
 RUN chmod -R 777 data
 RUN chmod -R 777 tmp
 
-#RUN ls inc
+RUN ls inc
 #RUN ls /etc/nginx/sites-enabled
 #RUN cat /etc/nginx/sites-enabled/web.conf
 #RUN php -v
