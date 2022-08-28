@@ -17,8 +17,8 @@ RUN docker-php-ext-install -j$(nproc) \
  mbstring
 
 #ssl
-COPY ./localhost.crt /etc/nginx/localhost.crt
-COPY ./localhost.key /etc/nginx/localhost.key
+COPY ./pictshare.meey.dev.crt /etc/nginx/pictshare.meey.dev.crt
+COPY ./pictshare.meey.dev.key /etc/nginx/pictshare.meey.dev.key
 
 COPY ./deploy/web.conf /etc/nginx/sites-enabled
 COPY ./deploy/start.sh /etc/start.sh
