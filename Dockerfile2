@@ -14,35 +14,20 @@ RUN docker-php-ext-install -j$(nproc) \
  json \
  mbstring
 
-#RUN ls -la
 #ssl
-COPY ./pictshare.meey.dev.crt /etc/nginx/pictshare.meey.dev.crt
-COPY ./pictshare.meey.dev.key /etc/nginx/pictshare.meey.dev.key
+#COPY ./pictshare.meey.dev.crt /etc/nginx/pictshare.meey.dev.crt
+#COPY ./pictshare.meey.dev.key /etc/nginx/pictshare.meey.dev.key
 
-#COPY ./deploy/web.conf /etc/nginx/sites-enabled
-#COPY ./deploy/start.sh /etc/start.sh
-#COPY ./deploy/supervisor.conf /etc/supervisor/conf.d/
-
-#RUN rm /etc/nginx/sites-enabled/default
-
-#COPY . /var/www/html/
-#WORKDIR /var/www/html/
+COPY . /var/www/html/
+WORKDIR /var/www/html
 
 RUN rm -f inc/example.config.inc.php
 
-RUN ls -la
-RUN chmod -R 777 ./data
-RUN chmod -R 777 ./tmp
+#USER root
+RUN usermod -u 1000 www-data
+RUN chmod -R 777 data
+RUN chmod -R 777 tmp
 
-RUN ls inc
-#RUN ls /etc/nginx/sites-enabled
-#RUN cat /etc/nginx/sites-enabled/web.conf
-#RUN php -v
-#RUN ls /usr/local/sbin/
-#RUN ls /etc/php
-#RUN ls /etc/php/7.3/fpm/
+CMD ["php-fpm"]
 
-#Init code
-RUN chmod +x /etc/start.sh
-#EXPOSE 8088
-#ENTRYPOINT ["/etc/start.sh"]
+EXPOSE 9000

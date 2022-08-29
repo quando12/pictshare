@@ -17,8 +17,8 @@ RUN docker-php-ext-install -j$(nproc) \
  mbstring
 
 #ssl
-COPY ./pictshare.meey.dev.crt /etc/nginx/pictshare.meey.dev.crt
-COPY ./pictshare.meey.dev.key /etc/nginx/pictshare.meey.dev.key
+COPY ./deploy/pictshare.meey.dev.crt /etc/nginx/pictshare.meey.dev.crt
+COPY ./deploy/pictshare.meey.dev.key /etc/nginx/pictshare.meey.dev.key
 
 COPY ./deploy/web.conf /etc/nginx/sites-enabled
 COPY ./deploy/start.sh /etc/start.sh

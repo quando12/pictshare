@@ -1,20 +1,20 @@
-version: "3.9"
+version: "3"
 services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    volumes:
+      - ./:/var/www/html
+    expose:
+      - "9000"
   nginx:
-    container_name: nginx
     build: ./deploy2/nginx
-    command: nginx -g "daemon off;"
-    links:
-      - php
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./:/var/www/html
-  php:
-    container_name: php
-    build: 
-        context: .
-        dockerfile: Dockerfile2
-    volumes:
-      - ./:/var/www/html
-    working_dir: /var/www/html
+    depends_on:
+      - php-fpm
+
