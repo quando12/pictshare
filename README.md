@@ -14,5 +14,6 @@
   - about:preferences#privacy
 - docker compose -f docker-compose-2.yml build
 - docker compose -f docker-compose-2.yml up
+- docker compose -f docker-compose-2.yml up -d --scale php-fpm=3
 - Truy cập: https://pictshare.meey.dev
 
